@@ -1,6 +1,6 @@
 # download_music.py
 import yt_dlp
-import re  # Import thư viện để sử dụng regex
+import re  # Import library to use regex
 
 def download_music(url):
     ydl_opts = {
@@ -10,15 +10,15 @@ def download_music(url):
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-        'outtmpl': '%(title)s.%(ext)s',  # Đặt tên file tải về
+        'outtmpl': '%(title)s.%(ext)s',  # Name the file use want to download
     }
     
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info_dict = ydl.extract_info(url, download=True)
         title = info_dict['title']
         
-        # Loại bỏ các ký tự không hợp lệ
-        sanitized_title = re.sub(r'[<>:"/\\|?*]', '_', title)  # Thay thế bằng dấu gạch dưới
-        filename = f"{sanitized_title}.mp3"  # Tạo tên file mới
+        # remove unidentifi characters
+        sanitized_title = re.sub(r'[<>:"/\\|?*]', '_', title)  # replace with underslash
+        filename = f"{sanitized_title}.mp3"  # create a new file name
 
-        return filename  # Trả về tên file tải xuống
+        return filename  # return file name and download
