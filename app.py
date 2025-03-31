@@ -4,30 +4,30 @@ import pygame  # Import pygame
 import os
 
 def main():
-    url = input("Nhập URL bài nhạc bạn muốn tải: ")
+    url = input("Type in song's URL: ")
     filename = download_music(url)
-    print(f"Đã tải nhạc thành công: {filename}")
+    print(f"Downloaded: {filename}")
 
-    # Tạo đường dẫn đầy đủ để phát nhạc
+    # created a link path to streams music
     full_path = os.path.join(os.getcwd(), filename)
 
-    # Kiểm tra file có tồn tại không
+    # check for file existence
     if not os.path.exists(full_path):
-        print(f"File không tồn tại: {full_path}")
+        print(f"File doesn't exist: {full_path}")
         return
 
-    # Khởi động pygame
+    # run pygame
     pygame.mixer.init()
     pygame.mixer.music.load(full_path)
     pygame.mixer.music.play()
 
-    print("Đang phát nhạc...")
+    print("Playing...")
 
-    # Đợi cho đến khi nhạc phát xong
+    # playing the music
     while pygame.mixer.music.get_busy():
         continue
 
-    print("Phát nhạc xong!")
+    print("Done!")
 
 if __name__ == "__main__":
     main()
