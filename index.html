@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Music Player</h1>
+    <div class="search-bar">
+        <form action="/download" method="post">
+            <input type="text" name="query" placeholder="Search for songs..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Hiển thị kết quả tìm kiếm -->
+    {% if success and video_results %}
+        <h3>Kết quả tìm kiếm:</h3>
+        <ul class="video-list">
+            {% for video in video_results %}
+                <li class="video-item">
+                    <a href="{{ video.video_url }}" target="_blank">
+                        <img src="{{ video.thumbnail }}" alt="{{ video.title }}" class="thumbnail">
+                        <h4>{{ video.title }}</h4>
+                        <p>{{ video.description }}</p>
+                    </a>
+                    <form action="/download_mp3" method="post">
+                        <input type="hidden" name="video_url" value="{{ video.video_url }}">
+                        <button type="submit" class="download-button">Download MP3</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Không tìm thấy video nào cho từ khóa này. Vui lòng thử từ khóa khác.</p>
+    {% endif %}
+</body>
+</html>
