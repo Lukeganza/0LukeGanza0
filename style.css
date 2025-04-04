@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin-top: 30px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px;
+}
+
+.search-bar button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
