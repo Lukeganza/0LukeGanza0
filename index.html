@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Music Player</h1>
+    <div class="search-bar">
+        <form action="/download" method="post">
+            <input type="text" name="query" placeholder="Search for songs..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    {% if success and video_results %}
+        <h3>Kết quả tìm kiếm:</h3>
+        <ul class="video-list">
+            {% for video in video_results %}
+                <li class="video-item">
+                    <img src="{{ video.thumbnail }}" alt="{{ video.title }}" class="thumbnail">
+                    <div class="video-info">
+                        <a href="{{ video.video_url }}" target="_blank" class="title">{{ video.title }}</a>
+                        <p>{{ video.description }}</p>
+                        {% if video.audio_url %}
+                            <audio controls>
+                                <source src="{{ video.audio_url }}" type="audio/mp3">
+                                Trình duyệt của bạn không hỗ trợ phát nhạc.
+                            </audio>
+                        {% else %}
+                            <p>Không thể phát nhạc.</p>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Không tìm thấy kết quả. Hãy thử từ khóa khác.</p>
+    {% endif %}
+</body>
+</html>

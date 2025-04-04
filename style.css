@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.video-list {
+    list-style: none;
+    padding: 0;
+}
+
+.video-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+.thumbnail {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.video-info {
+    flex: 1;
+}
+
+.title {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
